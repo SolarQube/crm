@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+/* Dark mode follows the in-app Daylight/Obsidian toggle (adds .dark to the app root) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ──────────────────────────────────────────────────────────────
+   SolarQube Energy — brand theme
+   Logo colours: deep navy #0f1454 · cyan #0496cf · electric blue #1e7be0
+   ────────────────────────────────────────────────────────────── */
+@theme {
+  /* Typeface — Montserrat, same geometric family as the SOLARQUBE wordmark */
+  --font-sans: 'Montserrat Variable', 'Montserrat', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Montserrat Variable', 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand accent (replaces the old gold/amber). 500 = logo cyan. */
+  --color-brand-50:  #ecf9ff;
+  --color-brand-100: #d4f1fd;
+  --color-brand-200: #aae3fb;
+  --color-brand-300: #6fd0f6;
+  --color-brand-400: #2db8ec;
+  --color-brand-500: #0496cf;
+  --color-brand-600: #057bb0;
+  --color-brand-700: #0a6290;
+  --color-brand-800: #104e73;
+  --color-brand-900: #133f5c;
+  --color-brand-950: #0b2a42;
+
+  /* Brand navy (logo wordmark) for headings / strong surfaces */
+  --color-navy: #0f1454;
+
+  /* Neutrals re-tinted toward the brand navy; 400/500/600 tuned for contrast */
+  --color-slate-50:  #f5f8fc;
+  --color-slate-100: #ebf0f8;
+  --color-slate-200: #d9e1ee;
+  --color-slate-300: #b9c4d9;
+  --color-slate-400: #8392b0;
+  --color-slate-500: #5a6886;
+  --color-slate-600: #46526e;
+  --color-slate-700: #333e5a;
+  --color-slate-800: #222b47;
+  --color-slate-900: #141b3a;
+  --color-slate-950: #0a0f26;
+
+  /* Type scale — nudged up a step because Montserrat runs wide/low-contrast at small sizes */
+  --text-xs: 0.8125rem;            /* 13px (was 12px) */
+  --text-xs--line-height: 1.25rem;
+}
+
+@layer base {
+  :root {
+    --bg-canvas: #f5f8fc;
+    --text-primary: #141b3a;
+    --text-secondary: #46526e;
+    --card-bg: #ffffff;
+    --card-border: #d9e1ee;
+  }
+
+  .dark {
+    --bg-canvas: #080c22;
+    --text-primary: #f5f8fc;
+    --text-secondary: #b9c4d9;
+    --card-bg: #0e1432;
+    --card-border: #222b47;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;          /* 14px base */
+    line-height: 1.55;
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 0;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  /* One brand typeface everywhere; keep numbers aligned in tables/KPIs */
+  .font-mono, table, .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+  .font-mono { letter-spacing: 0.01em; }
+
+  code, pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+
+  h1, h2, h3, h4 { color: inherit; }
+
+  ::selection { background: rgb(4 150 207 / 0.25); }
+
+  button:focus-visible,
+  a:focus-visible,
+  [role="button"]:focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+  }
+
+  input::placeholder, textarea::placeholder { color: var(--color-slate-400); opacity: 1; }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(131, 146, 176, 0.45); border-radius: 9999px; }
+.dark ::-webkit-scrollbar-thumb { background: rgba(70, 82, 110, 0.7); }
+::-webkit-scrollbar-thumb:hover { background: rgba(4, 150, 207, 0.7); }

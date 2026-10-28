@@ -1,0 +1,6 @@
+{
+  "name": "SolarQube CRM - Solar EPC Lead & Pipeline Management",
+  "description": "Enterprise solar CRM for SolarQube to track customer leads, manage project pipelines from site survey to commissioning, and automate intelligent follow-up email sequences.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
